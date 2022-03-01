@@ -179,8 +179,12 @@ class Customer implements ActionListener
  int rate;
  try
 {
-  Class.forName("org.postgresql.Driver");
-  Connection con=DriverManager.getConnection("jdbc:postgresql://rogue.db.elephantsql.com:5432/umgkbxqj","umgkbxqj","JHnsOPCq9Z7EuXbw7YWOScKRhmPTAZMZ");
+  Class.forName("oracle.jdbc.driver.OracleDriver");
+String url = "jdbc:oracle:thin:@localhost:1521:XE";
+String username = "xe";
+String password = "xe";
+Connection con= DriverManager.getConnection(url, username, password);
+ 
   Statement st=con.createStatement();
   ResultSet r;
   

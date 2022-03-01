@@ -55,9 +55,12 @@ String sql = new String();
 Boolean b=true;
 try
 {
-Class.forName("org.postgresql.Driver");
-Connection c = DriverManager.getConnection("jdbc:postgresql://rogue.db.elephantsql.com:5432/umgkbxqj","umgkbxqj","JHnsOPCq9Z7EuXbw7YWOScKRhmPTAZMZ");
-Statement st = c.createStatement();
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+    String url = "jdbc:oracle:thin:@localhost:1521:XE";
+    String username = "xe";
+    String password = "xe";
+    Connection con= DriverManager.getConnection(url, username, password);
+Statement st = con.createStatement();
 ResultSet r;
 int p;
 if(s.equals("LOGIN"))
@@ -65,7 +68,7 @@ if(s.equals("LOGIN"))
 username = t1.getText();
 char[]pass= p1.getPassword();
 password=new String(pass);
-r = st.executeQuery("select password from log where username='" + username + "';");
+r = st.executeQuery("select password from log where username='" + username + "'");
 if(r.next())
 {
 String pa = r.getString("PASSWORD");
@@ -92,7 +95,7 @@ else if(s.equals("REGISTER"))
 username = t1.getText();
 char[]pass= p1.getPassword();
 password=new String(pass);
-r = st.executeQuery("select username from log where username='" + username + "';");
+r = st.executeQuery("select username from log where username='" + username + "'");
 if(r.next())
 {
 b=false;

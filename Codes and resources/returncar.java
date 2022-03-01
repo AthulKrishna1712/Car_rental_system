@@ -78,21 +78,24 @@ String s = a.getActionCommand();
 //String p = new String();
 try
 {
-Class.forName("org.postgresql.Driver");
-Connection c = DriverManager.getConnection("jdbc:postgresql://rogue.db.elephantsql.com:5432/umgkbxqj","umgkbxqj","JHnsOPCq9Z7EuXbw7YWOScKRhmPTAZMZ");
-Statement st = c.createStatement();
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+    String url = "jdbc:oracle:thin:@localhost:1521:XE";
+    String username = "xe";
+    String password = "xe";
+    Connection con= DriverManager.getConnection(url, username, password);
+Statement st = con.createStatement();
 ResultSet r;
 if(s.equals("OTHER DETAILS"))
 {
 model = t2.getText();
 model=model.toUpperCase();
-r = st.executeQuery("select brand from car where model='" + model + "';");
+r = st.executeQuery("select brand from car where model='" + model + "'");
 if(r.next())
 {
 String p=r.getString("brand");
 t3.setText(p);
 }
-r = st.executeQuery("select regno from car where model='" + model + "';");
+r = st.executeQuery("select regno from car where model='" + model + "'");
 if(r.next())
 {
 String p=r.getString("regno");
