@@ -6,6 +6,4 @@ ATHUL KRISHNA
 
 ASWIN ALEX REXY
 
-JERIN PAUL
-
 Start the program execution from ‘’Pro.java” file. All the files are linked with each other.
